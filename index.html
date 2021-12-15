@@ -10,183 +10,108 @@
 <script src='https://d3js.org/d3.v7.min.js'></script>
 
 <body>
-  <h1>D3 Urkaine map</h1>
-  <!-- <div class="container-fluid">
-    <svg id='svg' width='1000px' height='600px'>
-      <path> </path>
-    </svg>
-  </div> -->
-  <div id="d3">
+  <h1>Minsk arena</h1>
+  <div style="display: flex; justify-content: space-between;" id="d3">
   </div>
   </div>
 </body>
 
 <script>
-  var w = 1000,
+  const w = 600,
     h = 600;
 
-  var svg = d3.select("#d3").append("svg")
+  const svg = d3.select("#d3").append("svg")
     .attr("width", w)
-    .attr("height", h);
+    .attr("height", h)
+    .attr("viewBox", "0 0 2000 3000")
 
-  //scale to fit canvas
-  var xS = d3.scaleLinear().range([0, w]),
-    yS = d3.scaleLinear().range([0, h]);
-
-  //accessor function used by the path generator to produce path data (this works for lines - find another one for archs later)
-  var lineFunction = d3.line()
-    .x(function (d) { return xS(d.x); })
-    .y(function (d) { return yS(d.y); })
-    .curve(d3.curveLinear);
+  const seatSvg = d3.select("#d3").append("svg")
+    .attr("width", w)
+    .attr("height", h)
+    .attr("viewBox", "0 0 1000 1500")
 
   async function handleSvg() {
-    const data = await d3.json("http://localhost:8000/test4.json");
+    const data = await d3.json("http://localhost:8000/soho.json");
 
-    const extendArray = [];
-    const roomArray = {room: [], seats: []};
-    // const roomArray = data;
-    console.log(data)
-
-    for (let i = 0; i < data.length; i++) {
-      let roomItems = [];
-      let seatItems = [];
-
-      for (j = 0; j < data[i].room.length; j++) {
-        //Start point
-        var x = (data[i].room[j].x).toFixed(0);
-        var y = (data[i].room[j].y).toFixed(0);
-        var startPoint = {
-          x: +x,
-          y: +y
-        };
-        roomItems.push(startPoint);
-        extendArray.push(startPoint);
-      }
-      for (k = 0; k < data[i].data.length; k++) {
-        let seatCoord = [];
-        for (z = 0; z < data[i].data[k].length; z++) {
-          var x = (data[i].data[k][z].x).toFixed(0);
-          var y = (data[i].data[k][z].y).toFixed(0);
-          var startPoint = {
-            x: +x,
-            y: +y
-          };
-          seatCoord.push(startPoint);
-          extendArray.push(startPoint);
-        }
-        seatItems.push(seatCoord)
-      }
-      roomArray.seats.push(seatItems)
-      roomArray.room.push(roomItems)
-    }
-
-    console.log(roomArray)
-
-    xS.domain(d3.extent(extendArray, function (d) {
-      return d.x;
-    }));
-
-    yS.domain(d3.extent(extendArray, function (d) {
-      return d.y;
-    }));
-
-    svg.selectAll(".room").data(roomArray.room)
+    let seats = seatSvg.selectAll('.path');
+    let sector = svg.selectAll('.path')
+      .data(data.entities)
       .enter()
-      .append("g") //<-- each g is a collection of paths that make up the room
-      .attr("class", "room")
-      .append("path")
-      .attr("d", lineFunction)
-      .attr("stroke", "blue")
-      .attr("stroke-width", 2)
-      .attr("fill", "none")
+      .append("g")
+      .attr("id", (d) => `${d.type}_${d.id}`)
+      .on("click", (e) => {
+        console.log(e.target.__data__)
+        const data = e.target.__data__;
+
+        if (!data.entities) return;
+        
+        const rowSeats = data.entities
+          .find((item) => item.type === 'rowBlock')
+          .rows.reduce((acc, val) => ([...acc, ...val.seats]), []);
+
+        const pathsData = data.entities
+          .filter((item) => item.type != 'rowBlock');
+        
+        let seats = seatSvg.selectAll('.path')
+          .data(rowSeats)
+          .enter()
+          .append("g")
+
+        seats
+          .append('circle')
+          .attr('cx', (d) => d.position.x)
+          .attr('cy', (d) => d.position.y)
+          .attr('r', '10px')
+          .style('fill', "#E7E8E9")
+
+        let paths = seatSvg.selectAll('.path')
+          .data(pathsData)
+          .enter()
+          .append('path')
+          .attr("d", (d) => d.points)
+          .attr("stroke-width", 0)
+          .attr('stroke-linecap', "round")
+          .attr('stroke-linkejoin', "round")
+          .attr("fill", (d) => d.fill.color)
+      })
+
+    sector
+      .append('path')
+      .attr("d", (d) => d.points)
+      .attr("stroke", "#B3B3B3")
+      .attr("stroke-width", 0)
+      .attr('stroke-linecap', "round")
+      .attr('stroke-linkejoin', "round")
+      .attr("fill", (d) => d.fill.color)
       
+   
 
-    svg.selectAll(".seat").data(roomArray.seats[0])
-      .enter()
-      .append("g") //<-- each g is a collection of paths that make up the room
-      .attr("class", "seat")
-      // .selectAll("path")
-      // .data(function (d) {
-      //   return d; //<-- return the array of data for the room
-      // })
-      // .enter()
-      .append("path")
-      .attr("d", lineFunction)
-      .attr("stroke", "blue")
-      .attr("stroke-width", 1)
-      .attr("fill", "none")
+    // svg.selectAll(".seat").data(roomArray.seats)
+    //   .enter()
+    //   .append("g") //<-- each g is a collection of paths that make up the room
+    //   .attr("class", "seat")
+    //   .selectAll("path")
+    //   .data(function (d) {
+    //     console.log(d)
+    //     return d; //<-- return the array of data for the room
+    //   })
+    //   .enter()
+    //   .append("path")
+    //   .attr("d", lineFunction)
+    //   .attr("stroke", "blue")
+    //   .attr("stroke-width", 2)
+    //   .attr("fill", "none")
+    //   .on("click", function(d){
+    //     console.log(d)
+    //     // Determine if current line is visible
+    //     console.log('click')
+    //     d3.select(".seat path").style("stroke", 'red')
+    //     // d3.select("#redAxis").style("opacity", newOpacity);
+    //     // Update whether or not the elements are active
+    //   })
   }
 
   handleSvg()
-
-  // d3.json("https://codepen.io/MadsHolten/pen/RaJGOp.js", function (error, plan) {
-  //   if (error) return console.error(error);
-
-  //   var extendArray = [];
-  //   var roomArray = [];
-
-  //   //Loop through rooms
-  //   for (i = 0; i < plan.length; i++) {
-  //     //Empty lineArray for each room
-  //     var lineArray = [];
-
-  //     //Loop through lines of room i
-  //     for (j = 0; j < plan[i][0].length; j++) {
-  //       //Empty pointArray for each line
-  //       var pointArray = [];
-  //       //Start point
-  //       var x = (plan[i][0][j].start[0]).toFixed(0);
-  //       var y = (plan[i][0][j].start[1]).toFixed(0);
-  //       var startPoint = {
-  //         x: +x,
-  //         y: +y
-  //       };
-  //       pointArray.push(startPoint);
-  //       extendArray.push(startPoint);
-
-  //       //End point
-  //       var x = (plan[i][0][j].end[0]).toFixed(0);
-  //       var y = (plan[i][0][j].end[1]).toFixed(0);
-  //       var endPoint = {
-  //         x: +x,
-  //         y: +y
-  //       };
-  //       pointArray.push(endPoint);
-  //       extendArray.push(endPoint);
-
-  //       //Push line start and end point to lineArray
-  //       lineArray.push(pointArray);
-  //       console.log(lineArray);
-  //     }
-  //     roomArray.push(lineArray);
-  //   }
-
-  //   xS.domain(d3.extent(extendArray, function (d) {
-  //     return d.x;
-  //   }));
-
-  //   yS.domain(d3.extent(extendArray, function (d) {
-  //     return d.y;
-  //   }));
-
-  //   // var testdata = JSON.stringify(roomArray);
-  //   // d3.select("#console").html('testdata = ' + testdata + ';');
-
-  //   svg.selectAll(".room").data(roomArray)
-  //     .enter()
-  //     .append("g") //<-- each g is a collection of paths that make up the room
-  //     .attr("class", "room")
-  //     .selectAll("path")
-  //     .data(function (d) {
-  //       return d; //<-- return the array of data for the room
-  //     })
-  //     .enter()
-  //     .append("path")
-  //     .attr("d", lineFunction)
-  //     .attr("stroke", "blue")
-  //     .attr("stroke-width", 2)
-  //     .attr("fill", "none");
-  // });
 
 
 </script>
