@@ -1,0 +1,856 @@
+{
+  "lightRender": false,
+  "entities": [
+      {
+          "name": "Sector A",
+          "id": 1,
+          "type": "sectorBlock",
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "points": "M17.9,64.5H214c9.4,0,16.9,7.5,16.9,16.9v232.1  c0,9.2-7.5,16.5-16.9,16.5H17.9c-9.2,0-16.7-7.5-16.7-16.5V81.4C1.2,72,8.7,64.5,17.9,64.5z",
+          "shape": "path",
+          "label": {
+              "visible": false
+          },
+          "stroke": {
+              "color": "#808080",
+              "opacity": 1,
+              "width": 2.3608,
+              "linecap": "round",
+              "linejoin": "round"
+          },
+          "fill": {
+              "color": "#E6E6E6",
+              "opacity": 1
+          },
+          "entities": [       {
+          "id": 2,
+          "type": "rowBlock",
+          "x": 29.7,
+          "y": 91.1,
+          "name": "Sector A",
+          "rotation": 0,
+          "lablePosition": "none",
+          "radius": 0,
+          "rows": [
+              {
+                  "id": 3,
+                  "name": "1",
+                  "seats": [
+                      {
+                          "id": 4,
+                          "name": "1",
+                          "position": {
+                              "x": 29.7,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 5,
+                          "name": "2",
+                          "position": {
+                              "x": 59.3,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 6,
+                          "name": "3",
+                          "position": {
+                              "x": 89.2,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 7,
+                          "name": "4",
+                          "position": {
+                              "x": 118.9,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 8,
+                          "name": "5",
+                          "position": {
+                              "x": 148.8,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 9,
+                          "name": "6",
+                          "position": {
+                              "x": 178.5,
+                              "y": 279.9
+                          }
+                      }
+                  ]
+              },
+              {
+                  "id": 10,
+                  "name": "2",
+                  "seats": [
+                      {
+                          "id": 11,
+                          "name": "1",
+                          "position": {
+                              "x": 29.7,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 12,
+                          "name": "2",
+                          "position": {
+                              "x": 59.3,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 13,
+                          "name": "3",
+                          "position": {
+                              "x": 89.2,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 14,
+                          "name": "4",
+                          "position": {
+                              "x": 118.9,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 15,
+                          "name": "5",
+                          "position": {
+                              "x": 148.8,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 16,
+                          "name": "6",
+                          "position": {
+                              "x": 178.5,
+                              "y": 232.6
+                          }
+                      }
+                  ]
+              },
+              {
+                  "id": 17,
+                  "name": "3",
+                  "seats": [
+                      {
+                          "id": 18,
+                          "name": "1",
+                          "position": {
+                              "x": 29.7,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 19,
+                          "name": "2",
+                          "position": {
+                              "x": 59.3,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 20,
+                          "name": "3",
+                          "position": {
+                              "x": 89.2,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 21,
+                          "name": "4",
+                          "position": {
+                              "x": 118.9,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 22,
+                          "name": "5",
+                          "position": {
+                              "x": 148.8,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 23,
+                          "name": "6",
+                          "position": {
+                              "x": 178.5,
+                              "y": 185.3
+                          }
+                      }
+                  ]
+              },
+              {
+                  "id": 24,
+                  "name": "4",
+                  "seats": [
+                      {
+                          "id": 25,
+                          "name": "1",
+                          "position": {
+                              "x": 29.7,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 26,
+                          "name": "2",
+                          "position": {
+                              "x": 59.3,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 27,
+                          "name": "3",
+                          "position": {
+                              "x": 89.2,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 28,
+                          "name": "4",
+                          "position": {
+                              "x": 118.9,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 29,
+                          "name": "5",
+                          "position": {
+                              "x": 148.8,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 30,
+                          "name": "6",
+                          "position": {
+                              "x": 178.5,
+                              "y": 138.2
+                          }
+                      }
+                  ]
+              },
+              {
+                  "id": 31,
+                  "name": "5",
+                  "seats": [
+                      {
+                          "id": 32,
+                          "name": "1",
+                          "position": {
+                              "x": 29.7,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 33,
+                          "name": "2",
+                          "position": {
+                              "x": 59.3,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 34,
+                          "name": "3",
+                          "position": {
+                              "x": 89.2,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 35,
+                          "name": "4",
+                          "position": {
+                              "x": 118.9,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 36,
+                          "name": "5",
+                          "position": {
+                              "x": 148.8,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 37,
+                          "name": "6",
+                          "position": {
+                              "x": 178.5,
+                              "y": 91.1
+                          }
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "type": "textBlock",
+          "id": 38,
+          "color": "#4D4D4D",
+          "text": "1",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 12.7686,
+          "y": 283.2653
+      },
+      {
+          "type": "textBlock",
+          "id": 39,
+          "color": "#4D4D4D",
+          "text": "2",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 12.2905,
+          "y": 236.1603
+      },
+      {
+          "type": "textBlock",
+          "id": 40,
+          "color": "#4D4D4D",
+          "text": "3",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 12.0859,
+          "y": 188.8322
+      },
+      {
+          "type": "textBlock",
+          "id": 41,
+          "color": "#4D4D4D",
+          "text": "4",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 12.394,
+          "y": 141.7301
+      },
+      {
+          "type": "textBlock",
+          "id": 42,
+          "color": "#4D4D4D",
+          "text": "5",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 12.0386,
+          "y": 94.4586
+      },
+      {
+          "type": "textBlock",
+          "id": 43,
+          "color": "#1A1A1A",
+          "text": "Sector A",
+          "rotation": 0,
+          "fontSize": "48.0941",
+          "x": 24.0273,
+          "y": 35.0734
+      }]
+      },
+
+      {
+          "name": "Sector B",
+          "id": 44,
+          "type": "sectorBlock",
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "points": "M261.8,64.5h196.3c9.2,0,16.7,7.5,16.7,16.9v232.1  c0,9.2-7.5,16.5-16.7,16.5H261.8c-8.9,0-16.5-7.5-16.5-16.5V81.4C245.3,72,252.8,64.5,261.8,64.5z",
+          "shape": "path",
+          "label": {
+              "visible": false
+          },
+          "stroke": {
+              "color": "#808080",
+              "opacity": 1,
+              "width": 2.3608,
+              "linecap": "round",
+              "linejoin": "round"
+          },
+          "fill": {
+              "color": "#E6E6E6",
+              "opacity": 1
+          },
+          "entities": [ {
+          "id": 45,
+          "type": "rowBlock",
+          "x": 273.5,
+          "y": 91.1,
+          "name": "Sector B",
+          "rotation": 0,
+          "lablePosition": "none",
+          "radius": 0,
+          "rows": [
+              {
+                  "id": 46,
+                  "name": "1",
+                  "seats": [
+                      {
+                          "id": 47,
+                          "name": "1",
+                          "position": {
+                              "x": 273.5,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 48,
+                          "name": "2",
+                          "position": {
+                              "x": 303.2,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 49,
+                          "name": "3",
+                          "position": {
+                              "x": 333.1,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 50,
+                          "name": "4",
+                          "position": {
+                              "x": 363.0,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 51,
+                          "name": "5",
+                          "position": {
+                              "x": 392.9,
+                              "y": 279.9
+                          }
+                      },
+                      {
+                          "id": 52,
+                          "name": "6",
+                          "position": {
+                              "x": 422.3,
+                              "y": 279.9
+                          }
+                      }
+                  ]
+              },
+              {
+                  "id": 53,
+                  "name": "2",
+                  "seats": [
+                      {
+                          "id": 54,
+                          "name": "1",
+                          "position": {
+                              "x": 273.5,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 55,
+                          "name": "2",
+                          "position": {
+                              "x": 303.2,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 56,
+                          "name": "3",
+                          "position": {
+                              "x": 333.1,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 57,
+                          "name": "4",
+                          "position": {
+                              "x": 363.0,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 58,
+                          "name": "5",
+                          "position": {
+                              "x": 392.9,
+                              "y": 232.6
+                          }
+                      },
+                      {
+                          "id": 59,
+                          "name": "6",
+                          "position": {
+                              "x": 422.3,
+                              "y": 232.6
+                          }
+                      }
+                  ]
+              },
+              {
+                  "id": 60,
+                  "name": "3",
+                  "seats": [
+                      {
+                          "id": 61,
+                          "name": "1",
+                          "position": {
+                              "x": 273.5,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 62,
+                          "name": "2",
+                          "position": {
+                              "x": 303.2,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 63,
+                          "name": "3",
+                          "position": {
+                              "x": 333.1,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 64,
+                          "name": "4",
+                          "position": {
+                              "x": 363.0,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 65,
+                          "name": "5",
+                          "position": {
+                              "x": 392.9,
+                              "y": 185.3
+                          }
+                      },
+                      {
+                          "id": 66,
+                          "name": "6",
+                          "position": {
+                              "x": 422.3,
+                              "y": 185.3
+                          }
+                      }
+                  ]
+              },
+              {
+                  "id": 67,
+                  "name": "4",
+                  "seats": [
+                      {
+                          "id": 68,
+                          "name": "1",
+                          "position": {
+                              "x": 273.5,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 69,
+                          "name": "2",
+                          "position": {
+                              "x": 303.2,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 70,
+                          "name": "3",
+                          "position": {
+                              "x": 333.1,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 71,
+                          "name": "4",
+                          "position": {
+                              "x": 363.0,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 72,
+                          "name": "5",
+                          "position": {
+                              "x": 392.9,
+                              "y": 138.2
+                          }
+                      },
+                      {
+                          "id": 73,
+                          "name": "6",
+                          "position": {
+                              "x": 422.3,
+                              "y": 138.2
+                          }
+                      }
+                  ]
+              },
+              {
+                  "id": 74,
+                  "name": "5",
+                  "seats": [
+                      {
+                          "id": 75,
+                          "name": "1",
+                          "position": {
+                              "x": 273.5,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 76,
+                          "name": "2",
+                          "position": {
+                              "x": 303.2,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 77,
+                          "name": "3",
+                          "position": {
+                              "x": 333.1,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 78,
+                          "name": "4",
+                          "position": {
+                              "x": 363.0,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 79,
+                          "name": "5",
+                          "position": {
+                              "x": 392.9,
+                              "y": 91.1
+                          }
+                      },
+                      {
+                          "id": 80,
+                          "name": "6",
+                          "position": {
+                              "x": 422.3,
+                              "y": 91.1
+                          }
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "type": "textBlock",
+          "id": 81,
+          "color": "#4D4D4D",
+          "text": "1",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 257.9258,
+          "y": 283.2653
+      },
+      {
+          "type": "textBlock",
+          "id": 82,
+          "color": "#4D4D4D",
+          "text": "2",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 257.4502,
+          "y": 236.1603
+      },
+      {
+          "type": "textBlock",
+          "id": 83,
+          "color": "#4D4D4D",
+          "text": "3",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 257.248,
+          "y": 188.8322
+      },
+      {
+          "type": "textBlock",
+          "id": 84,
+          "color": "#4D4D4D",
+          "text": "4",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 257.5537,
+          "y": 141.7301
+      },
+      {
+          "type": "textBlock",
+          "id": 85,
+          "color": "#4D4D4D",
+          "text": "5",
+          "rotation": 0,
+          "fontSize": "18.6842",
+          "x": 257.2007,
+          "y": 94.4586
+      },
+      {
+          "type": "textBlock",
+          "id": 86,
+          "color": "#1A1A1A",
+          "text": "Sector B",
+          "rotation": 0,
+          "fontSize": "48.0941",
+          "x": 267.895,
+          "y": 35.0734
+      }]
+      },
+     
+      {
+          "id": 87,
+          "name": "Fan zone",
+          "type": "entranceBlock",
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "label": {
+              "visible": false
+          },
+          "points": "M474.8,648.7V734c0,4-2.6,7.5-6.1,8.7c-4,1.4-8,0.2-10.6-2.8  c-6.4-7.8-12.7-15.1-19.8-22.1C387,666.6,316.4,634.9,238,634.9c-78.2,0-149,31.8-200.3,83.1c-6.8,7.1-13.4,14.1-19.8,21.9  c-2.6,3.3-6.4,4.5-10.4,3.1c-3.8-1.4-6.4-4.9-6.4-8.9v-85.2c0-2.6,1.2-5.2,3.3-7.1c63.1-53.2,144.8-85.2,233.5-85.2  c89,0,170.4,32,233.3,85C473.6,643.6,474.8,645.9,474.8,648.7z",
+          "shape": "path",
+          "stroke": {
+              "color": "#808080",
+              "opacity": 1,
+              "width": 2.3608,
+              "linecap": "round",
+              "linejoin": "round"
+          },
+          "fill": {
+              "color": "#E9CFCF",
+              "opacity": 1
+          }
+      },
+      {
+          "id": 88,
+          "name": "Dance area",
+          "type": "entranceBlock",
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "label": {
+              "visible": false
+          },
+          "points": "M10.8,338.7h454.5c4.9,0,9.4,4.2,9.4,9.4v255.6  c0,3.5-2.1,6.8-5.4,8.5c-3.1,1.4-6.8,1.4-9.9-0.9c-62.1-45-138.6-71.8-221.5-71.8S78.6,566.4,16.3,611.3c-2.8,2.4-6.6,2.6-9.9,0.9  c-3.3-1.6-5.2-4.9-5.2-8.5V348.1C1.2,343,5.4,338.7,10.8,338.7z",
+          "shape": "path",
+          "stroke": {
+              "color": "#808080",
+              "opacity": 1,
+              "width": 2.3608,
+              "linecap": "round",
+              "linejoin": "round"
+          },
+          "fill": {
+              "color": "#CFCFE9",
+              "opacity": 1
+          }
+      },
+      {
+          "type": "pathBlock",
+          "x": 0,
+          "y": 0,
+          "rotation": 0,
+          "points": "M474.8,798v29.4c0,5.4-4.2,9.4-9.4,9.4H10.8c-5.4,0-9.7-4.2-9.7-9.4V798c0-1.6,0.7-3.1,1.4-4.5  c12.5-23.3,28.2-45.2,46.8-63.8c48.5-48,115.1-77.9,188.5-77.9c73.7,0,140.3,29.9,188.3,77.9c19.1,18.6,34.8,40.5,47.3,63.8  C474.3,794.9,474.8,796.3,474.8,798z",
+          "id": 89,
+          "stroke": {
+              "color": "#000000",
+              "opacity": 1,
+              "width": 2.3608,
+              "linecap": "round",
+              "linejoin": "round"
+          },
+          "fill": {
+              "color": "none",
+              "opacity": 1
+          }
+      },
+      {
+          "type": "textBlock",
+          "id": 90,
+          "color": "#1A1A1A",
+          "text": "STAGE",
+          "rotation": 0,
+          "fontSize": "47.6111",
+          "x": 159.3784,
+          "y": 744.7843
+      },
+      {
+          "type": "textBlock",
+          "id": 91,
+          "color": "#1A1A1A",
+          "text": "Dance area",
+          "rotation": 0,
+          "fontSize": "47.6111",
+          "x": 114.1831,
+          "y": 477.8488
+      },
+      {
+          "type": "textBlock",
+          "id": 92,
+          "color": "#1A1A1A",
+          "text": "Fan zone",
+          "rotation": 0,
+          "fontSize": "47.6111",
+          "x": 137.7227,
+          "y": 607.7853
+      },
+      {
+          "type": "titleBlock",
+          "id": 93,
+          "color": "#1A1A1A",
+          "text": "Sector A",
+          "rotation": 0,
+          "fontSize": "48.0941",
+          "x": 24.0273,
+          "y": 181.7233
+      },
+      {
+          "type": "titleBlock",
+          "id": 94,
+          "color": "#1A1A1A",
+          "text": "Sector B",
+          "rotation": 0,
+          "fontSize": "48.0941",
+          "x": 267.895,
+          "y": 181.7233
+      }
+  ]
+}

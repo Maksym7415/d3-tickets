@@ -1,0 +1,7 @@
+.active {
+  fill: blue !important
+}
+
+.hide {
+  display: none;
+}

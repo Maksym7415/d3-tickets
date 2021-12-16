@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./public/styles.css">
   <title>D3 map</title>
 </head>
 <script src='https://d3js.org/d3.v7.min.js'></script>
@@ -20,39 +21,86 @@
   const w = 600,
     h = 600;
 
+  let zoom = d3.zoom()
+    .on('zoom', handleZoom);
+
+  function handleZoom(e) {
+    if (e.transform.k > 1.1) { // showing seats and hiding sector names by zooming in
+      d3.selectAll(".titleBlock")
+        .classed('hide', true)
+
+      d3.selectAll(".seat")
+        .classed('hide', false)
+
+      // changing sector styles
+      d3.selectAll(".sectors")
+        .attr('fill', 'none')
+        .attr('stroke', '#E7E8E9')
+        .attr('stroke-width', 2)
+    } else { // hiding seats and showing sector names by zooming out
+      d3.selectAll(".titleBlock")
+        .classed('hide', false)
+
+      d3.selectAll(".seat")
+        .classed('hide', true)
+        
+      // changing sector styles
+      d3.selectAll(".sectors")
+        .attr('fill', (d) => d.fill.color)
+        .attr('stroke', 'none')
+        .attr('stroke-width', 0)
+    }
+    d3.select('svg')
+      .attr('transform', e.transform);
+  }
+
   const svg = d3.select("#d3").append("svg")
     .attr("width", w)
     .attr("height", h)
-    .attr("viewBox", "0 0 2000 3000")
+    .attr("viewBox", "0 0 600 800")
+    .call(zoom)
 
   const seatSvg = d3.select("#d3").append("svg")
     .attr("width", w)
     .attr("height", h)
-    .attr("viewBox", "0 0 1000 1500")
+    .attr("viewBox", "0 0 600 600")
 
   async function handleSvg() {
-    const data = await d3.json("http://localhost:8000/soho.json");
+    const data = await d3.json("http://localhost:8000/withText.json");
 
-    let seats = seatSvg.selectAll('.path');
-    let sector = svg.selectAll('.path')
-      .data(data.entities)
+    const allSeats = data.entities.reduce((acc, val) => {
+      if (val.type === 'sectorBlock') {
+        console.log('hell')
+        return [...acc, ...val.entities.reduce((acc, el) => {
+          if (el.type === 'rowBlock') {
+            return [...acc, ...el.rows.reduce((acc, val) => ([...acc, ...val.seats]), [])]
+          } else return [...acc]
+        },[])]
+      } else return [...acc]
+    }, [])
+
+    
+    const sector = svg.selectAll('.path-sector')
+      .data(data.entities.filter((el) => ['sectorBlock', 'entranceBlock', 'pathBlock'].includes(el.type)))
       .enter()
+      // CREATING g ELEMENT FOR EACH SECTOR
       .append("g")
-      .attr("id", (d) => `${d.type}_${d.id}`)
+      .attr("class", (d) => d.type)
+      // g element CLICK EVENT 
       .on("click", (e) => {
         console.log(e.target.__data__)
         const data = e.target.__data__;
 
-        if (!data.entities) return;
+        // if (!data.entities) return;
         
-        const rowSeats = data.entities
+        let rowSeats = data.entities
           .find((item) => item.type === 'rowBlock')
           .rows.reduce((acc, val) => ([...acc, ...val.seats]), []);
 
-        const pathsData = data.entities
+        let pathsData = data.entities
           .filter((item) => item.type != 'rowBlock');
         
-        let seats = seatSvg.selectAll('.path')
+        let seats = seatSvg.selectAll('.g-page')
           .data(rowSeats)
           .enter()
           .append("g")
@@ -63,52 +111,72 @@
           .attr('cy', (d) => d.position.y)
           .attr('r', '10px')
           .style('fill', "#E7E8E9")
+          .on("click", function(e) {
+            console.log(e)
+            if (e.target.classList.contains('active')) {
+              e.target.classList.remove('active')
+            } else {
+              e.target.classList.add('active')
+            }
+          })
 
-        let paths = seatSvg.selectAll('.path')
+        seats
+          .append('text')
+          .attr('x', (d) => d.position.x - 5)
+          .attr('y', (d) => d.position.y + 5)
+          .text((d) => d.name)
+
+        let text = seatSvg.selectAll('.text-seats-page')
           .data(pathsData)
           .enter()
-          .append('path')
-          .attr("d", (d) => d.points)
-          .attr("stroke-width", 0)
-          .attr('stroke-linecap', "round")
-          .attr('stroke-linkejoin', "round")
-          .attr("fill", (d) => d.fill.color)
+          .append('g')
+          .attr("class", (d) => d.type)
+
+        text
+          .append('text')
+          .attr('x', (d) => d.x - 10)
+          .attr('y', (d) => d.y + 3)
+          .style("font-size", (d) => d.fontSize)
+          .text((d) => d.text)
       })
 
+    // DRAWING SECTOR
     sector
       .append('path')
+      .attr('class', (d) => d.type === 'sectorBlock' ? 'sectors' : '')
       .attr("d", (d) => d.points)
-      .attr("stroke", "#B3B3B3")
-      .attr("stroke-width", 0)
       .attr('stroke-linecap', "round")
       .attr('stroke-linkejoin', "round")
       .attr("fill", (d) => d.fill.color)
-      
-   
 
-    // svg.selectAll(".seat").data(roomArray.seats)
-    //   .enter()
-    //   .append("g") //<-- each g is a collection of paths that make up the room
-    //   .attr("class", "seat")
-    //   .selectAll("path")
-    //   .data(function (d) {
-    //     console.log(d)
-    //     return d; //<-- return the array of data for the room
-    //   })
-    //   .enter()
-    //   .append("path")
-    //   .attr("d", lineFunction)
-    //   .attr("stroke", "blue")
-    //   .attr("stroke-width", 2)
-    //   .attr("fill", "none")
-    //   .on("click", function(d){
-    //     console.log(d)
-    //     // Determine if current line is visible
-    //     console.log('click')
-    //     d3.select(".seat path").style("stroke", 'red')
-    //     // d3.select("#redAxis").style("opacity", newOpacity);
-    //     // Update whether or not the elements are active
-    //   })
+    // DRAWING SEATS
+    const seats = svg.selectAll('.circle-seats')
+      .data(allSeats)
+      .enter()
+      .append('g')
+      .attr("class", 'seat hide')
+      
+    seats
+      .append('circle')
+      // seats don't have radius and we should move them on radius value to recoup displacement
+      .attr('cx', (d) => d.position.x + 10)
+      .attr('cy', (d) => d.position.y + 10)
+      .attr('r', '10px')
+      .style('fill', "#E7E8E9")
+
+    // DRAWING TEXT
+    const text = svg.selectAll('.sector-title')
+      .data(data.entities.filter((el) => ['titleBlock', 'textBlock'].includes(el.type)))
+      .enter()
+      .append('g')
+      .attr("class", (d) => d.type)
+
+    text
+      .append('text')
+      .attr('x', (d) => d.x)
+      .attr('y', (d) => d.y)
+      .style("font-size", (d) => d.fontSize)
+      .text((d) => d.text)
   }
 
   handleSvg()
